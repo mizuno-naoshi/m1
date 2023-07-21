@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Quiz::class);
     }
+    
+    public function like_comedies()
+    {
+        return $this->belongsToMany(Comedy::class);
+    }
 }
