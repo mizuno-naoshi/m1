@@ -7,16 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <h1>Blog Name</h1>
+        <h1>漫才検索</h1>
         <div class='comedies'>
             @foreach ($comedies as $comedy)
                 <div class='comedy'>
                     <h2 class='title'>
-                        <a href="/comedies/{{ $comedy->id }}">{{ $comedy->title }} {{ $comedy->year }} {{ $comedy->rank }}</a>
+                        <a href="/comedies/{{ $comedy->id }}">{{ $comedy->comedian->name }} {{ $comedy->title }} {{ $comedy->year }} {{ $comedy->rank }}</a>
                         </h2>
                     <p class='body'>{{ $comedy->script }}</p>
                 </div>
             @endforeach
+            <a href='/comedies/quiz'>クイズ</a>
         </div>
     </body>
 </html>

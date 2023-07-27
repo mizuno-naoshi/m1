@@ -15,4 +15,5 @@ use App\Http\Controllers\ComedyController;
 */
 
 Route::get('/', [ComedyController::class, 'index']);
-Route::get('/comedies/{comedy}', [ComedyController::class ,'show']);
+Route::get('/comedies/quiz', [ComedyController::class, 'quiz']);
+Route::get('/comedies/{comedy}', [ComedyController::class,'show']);
