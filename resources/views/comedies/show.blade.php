@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1 class="title">
-            {{ $comedy->title }} {{ $comedy->year }} {{ $comedy->rank }}
+            {{ $comedy->comedian->name }}{{ $comedy->title }} {{ $comedy->year }} {{ $comedy->rank }}
         </h1>
         <div class="content">
             <div class="content__post">

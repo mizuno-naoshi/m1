@@ -8,16 +8,31 @@
     </head>
     <body>
         <h1>漫才検索</h1>
-        <div class='comedies'>
-            @foreach ($comedies as $comedy)
-                <div class='comedy'>
-                    <h2 class='title'>
-                        <a href="/comedies/{{ $comedy->id }}">{{ $comedy->comedian->name }} {{ $comedy->title }} {{ $comedy->year }} {{ $comedy->rank }}</a>
-                        </h2>
-                    <p class='body'>{{ $comedy->script }}</p>
-                </div>
-            @endforeach
-            <a href='/comedies/quiz'>クイズ</a>
+<div>
+  <form action="{{ route('comedies.index') }}" method="GET">
+    <input type="text" name="keyword" value="{{ $keyword }}">
+    <input type="submit" value="検索">
+  </form>
+</div>
+<h1>
+  <span>検索結果</span>
+  <a href='/quiz'>[クイズ]</a>
+</h1>
+
+<table>
+  <tr>
+    <th>漫才師</th><th>文字起こし</th>
+  </tr>
+
+            @forelse ($comedies as $comedy)
+    　　<tr>
+      <td><a href="/comedies/{{ $comedy->id }}">{{ $comedy->comedian->name }} {{ $comedy->title }} {{ $comedy->year }} {{ $comedy->rank }}</td></a>
+      <td>{{ $comedy->script }}</td>
+    　　</tr>
+  　　　　@empty
+    　　<td>該当する漫才がありません</td>
+  　　　　@endforelse
+　　　　</table>
         </div>
     </body>
 </html>

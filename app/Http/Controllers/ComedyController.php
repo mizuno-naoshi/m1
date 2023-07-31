@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comedy;
-use App\Models\Quiz;
 use Illuminate\Http\Request;
 
 class ComedyController extends Controller
@@ -13,13 +12,24 @@ class ComedyController extends Controller
         return view('comedies.index')->with(['comedies' => $comedy->get()]);
     }
     
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $query = Comedy::query();
+
+        if(!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('script', 'LIKE', "%{$keyword}%");
+        }
+
+        $comedies = $query->get();
+
+        return view('comedies.index', compact('comedies', 'keyword'));
+    }
+
     public function show(Comedy $comedy)
     {
         return view('comedies.show')->with(['comedy' => $comedy]);
-    }
-    
-    public function quiz(Quiz $quiz)
-    {
-        return view('comedies.quiz')->with(['quiz' => $quiz]);
     }
 }

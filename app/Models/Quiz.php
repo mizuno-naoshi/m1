@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\Quiz;
 
 class Quiz extends Model
 {
     use HasFactory;
+    
     protected $table = 'quizzes';
     protected $fillable = ['question', 'answer', 'user_id'];
     
@@ -21,4 +22,5 @@ class Quiz extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
 }
