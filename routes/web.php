@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComedyController;
+use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +16,6 @@ use App\Http\Controllers\ComedyController;
 */
 
 Route::get('/', [ComedyController::class, 'index']);
-Route::get('/comedies/quiz', [ComedyController::class, 'quiz']);
+Route::get('/', [ComedyController::class, 'search'])->name('comedies.index');
+Route::get('/quiz', [QuizController::class, 'index']);
 Route::get('/comedies/{comedy}', [ComedyController::class,'show']);
